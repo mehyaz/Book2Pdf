@@ -1,0 +1,14 @@
+# Virtual environment
+book2pdf-env/
+
+# PyInstaller files
+dist/
+build/
+*.spec
+
+# Python cache
+__pycache__/
+*.pyc
+
+# macOS system files
+.DS_Store
