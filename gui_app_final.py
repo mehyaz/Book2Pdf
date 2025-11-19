@@ -83,7 +83,7 @@ class SelectionWindow(tk.Toplevel):
 class Book2PdfApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Book2Pdf Otomasyonu (v4.4 - Geri Sayım)")
+        self.title("Book2Pdf Otomasyonu (v4.5 - Kayıt Yolu Düzeltmesi)")
         self.geometry("450x440")
 
         self.mouse = Controller()
@@ -196,7 +196,7 @@ class Book2PdfApp(tk.Tk):
         try:
             self.toplam_sayfa = int(self.toplam_sayfa_var.get())
             self.bekleme_suresi = float(self.bekleme_suresi_var.get())
-            self.pdf_adi = self.pdf_adi_var.get()
+            pdf_adi = self.pdf_adi_var.get()
             self.kalite = self.kalite_var.get()
         except ValueError:
             messagebox.showerror("Hata", "Lütfen 'Toplam Sayfa' ve 'Bekleme Süresi' için geçerli sayılar girin.")
@@ -204,8 +204,12 @@ class Book2PdfApp(tk.Tk):
         if not self.sayfa_alani_physical or not self.sonraki_buton_physical:
             messagebox.showerror("Hata", "Lütfen başlamadan önce her iki alanı da seçin.")
             return
-        if not self.pdf_adi.lower().endswith(".pdf"):
-            self.pdf_adi += ".pdf"
+        if not pdf_adi.lower().endswith(".pdf"):
+            pdf_adi += ".pdf"
+
+        # PDF'i kullanıcının masaüstüne kaydet
+        desktop_path = os.path.join(os.path.expanduser('~'), 'Desktop')
+        self.full_pdf_path = os.path.join(desktop_path, pdf_adi)
 
         self.withdraw()
         self.start_countdown(3)
@@ -240,7 +244,7 @@ class Book2PdfApp(tk.Tk):
         sonraki_buton = self.sonraki_buton_physical
         toplam_sayfa = self.toplam_sayfa
         bekleme_suresi = self.bekleme_suresi
-        pdf_adi = self.pdf_adi
+        full_pdf_path = self.full_pdf_path
         kalite = self.kalite
 
         image_data_list = []
@@ -262,14 +266,14 @@ class Book2PdfApp(tk.Tk):
                     self.mouse.click(Button.left)
                     time.sleep(bekleme_suresi)
             
-            self.after(0, self.create_pdf_with_pymupdf, image_data_list, pdf_adi, kalite)
+            self.after(0, self.create_pdf_with_pymupdf, image_data_list, full_pdf_path, kalite)
         except Exception as e:
             self.after(0, messagebox.showerror, "Otomasyon Hatası", f"Bir hata oluştu: {e}")
         finally:
             self.after(0, self.deiconify)
             self.after(0, self.update_status, "İşlem tamamlandı veya durduruldu.")
 
-    def create_pdf_with_pymupdf(self, image_data_list, pdf_adi, kalite):
+    def create_pdf_with_pymupdf(self, image_data_list, pdf_path, kalite):
         if not image_data_list:
             messagebox.showwarning("PDF Hatası", "Hiç görüntü yakalanamadı.")
             return
@@ -305,10 +309,10 @@ class Book2PdfApp(tk.Tk):
                     page.insert_image(fitz.Rect(0, 0, width, height), stream=img_buffer)
 
             # PDF'i kaydet
-            doc.save(pdf_adi, garbage=4, deflate=True)
+            doc.save(pdf_path, garbage=4, deflate=True)
             doc.close()
             
-            messagebox.showinfo("Başarılı", f"'{pdf_adi}' ({kalite} kalite) başarıyla oluşturuldu!")
+            messagebox.showinfo("Başarılı", f"PDF dosyası Masaüstü'ne kaydedildi!\n\nYol: {pdf_path}")
         except Exception as e:
             messagebox.showerror("PDF Oluşturma Hatası", f"PyMuPDF ile PDF oluşturulurken bir hata oluştu: {e}")
 
