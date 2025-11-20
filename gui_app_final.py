@@ -143,7 +143,7 @@ class RoundedFrame(tk.Canvas):
 class Book2PdfApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Book2Pdf (v1.0)")
+        self.title("Book2Pdf (v1.0.2)")
         self.geometry("900x550") # Genişletilmiş modern tasarım
         self.configure(bg="#dcdad5") # Ana arka plan (Kullanıcının seçimi)
 

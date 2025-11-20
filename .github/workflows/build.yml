@@ -34,20 +34,20 @@ jobs:
     - name: Build with PyInstaller (Windows)
       if: matrix.os == 'windows-latest'
       run: |
-        pyinstaller --noconfirm --onefile --windowed --name "Book2Pdf-v1.0-Windows" --add-data "README.md;." gui_app_final.py
+        pyinstaller --noconfirm --onefile --windowed --name "Book2Pdf-${{ github.ref_name }}-Windows" --add-data "README.md;." gui_app_final.py
 
     - name: Build with PyInstaller (Linux)
       if: matrix.os == 'ubuntu-latest'
       run: |
-        pyinstaller --noconfirm --onefile --windowed --name "Book2Pdf-v1.0-Linux" --add-data "README.md:." gui_app_final.py
+        pyinstaller --noconfirm --onefile --windowed --name "Book2Pdf-${{ github.ref_name }}-Linux" --add-data "README.md:." gui_app_final.py
 
     - name: Build with PyInstaller (macOS)
       if: matrix.os == 'macos-latest'
       run: |
-        pyinstaller --noconfirm --onefile --windowed --name "Book2Pdf-v1.0-macOS" --add-data "README.md:." gui_app_final.py
+        pyinstaller --noconfirm --onefile --windowed --name "Book2Pdf-${{ github.ref_name }}-macOS" --add-data "README.md:." gui_app_final.py
         cd dist
-        zip -r Book2Pdf-v1.0-macOS.zip Book2Pdf-v1.0-macOS.app
-        rm -rf Book2Pdf-v1.0-macOS.app
+        zip -r Book2Pdf-${{ github.ref_name }}-macOS.zip Book2Pdf-${{ github.ref_name }}-macOS.app
+        rm -rf Book2Pdf-${{ github.ref_name }}-macOS.app
 
     - name: Upload Release Asset
       uses: softprops/action-gh-release@v1
