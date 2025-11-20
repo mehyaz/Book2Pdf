@@ -121,7 +121,7 @@ class SelectionWindow(tk.Toplevel):
 class Book2PdfApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Book2Pdf Otomasyonu (v4.7 - Görüntü İyileştirme)")
+        self.title("Book2Pdf Otomasyonu (v1.0)")
         self.geometry("450x550") # Yükseklik artırıldı
 
         self.mouse = Controller()
@@ -340,14 +340,14 @@ class Book2PdfApp(tk.Tk):
                     self.mouse.click(Button.left)
                     time.sleep(bekleme_suresi)
             
-            self.after(0, self.create_pdf_with_pymupdf, image_data_list, full_pdf_path, kalite, enhancements)
+            self.after(0, self.create_pdf_with_pymupdf, image_data_list, full_pdf_path, kalite, enhancements, scale_factor)
         except Exception as e:
             self.after(0, messagebox.showerror, "Otomasyon Hatası", f"Bir hata oluştu: {e}")
         finally:
             self.after(0, self.deiconify)
             self.after(0, self.update_status, "İşlem tamamlandı veya durduruldu.")
 
-    def create_pdf_with_pymupdf(self, image_data_list, pdf_path, kalite, enhancements):
+    def create_pdf_with_pymupdf(self, image_data_list, pdf_path, kalite, enhancements, scale_factor=1.0):
         if not image_data_list:
             messagebox.showwarning("PDF Hatası", "Hiç görüntü yakalanamadı.")
             return
@@ -386,13 +386,20 @@ class Book2PdfApp(tk.Tk):
                     pil_img = pil_img.resize((new_width, new_height), Image.Resampling.LANCZOS)
                     width, height = new_width, new_height
 
+                # PDF Sayfa Boyutunu Ayarla (High DPI için)
+                # Görüntü piksel boyutunu scale_factor'e bölerek mantıksal (point) boyutunu buluyoruz.
+                # Böylece PDF görüntüleyicisi bu sayfayı ekrandaki fiziksel boyutunda gösterecek,
+                # ancak içerik yüksek çözünürlüklü (Retina) olacak.
+                page_width = width / scale_factor
+                page_height = height / scale_factor
+
                 # PyMuPDF'e ekle
                 if kalite == "Yüksek (Yavaş)" or kalite == "Ultra (Yazılımsal 2x)":
                     # Kayıpsız
                     rgb_pixels = pil_img.tobytes()
                     pix = fitz.Pixmap(fitz.csRGB, width, height, rgb_pixels, False)
-                    page = doc.new_page(width=width, height=height)
-                    page.insert_image(fitz.Rect(0, 0, width, height), pixmap=pix)
+                    page = doc.new_page(width=page_width, height=page_height)
+                    page.insert_image(fitz.Rect(0, 0, page_width, page_height), pixmap=pix)
                 else:
                     # Kayıplı (JPEG)
                     quality_setting = 75 if kalite == "Normal (Önerilen)" else 50
@@ -400,8 +407,8 @@ class Book2PdfApp(tk.Tk):
                     pil_img.save(img_buffer, format="jpeg", quality=quality_setting)
                     img_buffer.seek(0)
                     
-                    page = doc.new_page(width=width, height=height)
-                    page.insert_image(fitz.Rect(0, 0, width, height), stream=img_buffer)
+                    page = doc.new_page(width=page_width, height=page_height)
+                    page.insert_image(fitz.Rect(0, 0, page_width, page_height), stream=img_buffer)
 
             # PDF'i kaydet
             doc.save(pdf_path, garbage=4, deflate=True)
