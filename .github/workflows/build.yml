@@ -45,6 +45,9 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: |
         pyinstaller --noconfirm --onefile --windowed --name "Book2Pdf-v1.0-macOS" --add-data "README.md:." gui_app_final.py
+        cd dist
+        zip -r Book2Pdf-v1.0-macOS.zip Book2Pdf-v1.0-macOS.app
+        rm -rf Book2Pdf-v1.0-macOS.app
 
     - name: Upload Release Asset
       uses: softprops/action-gh-release@v1
