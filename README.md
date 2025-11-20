@@ -1,71 +1,66 @@
-# Book2Pdf Otomasyonu
+# Book2Pdf Automation 📚✨
 
-Bu proje, dijital kitapları veya web tabanlı dökümanları otomatik olarak ekran görüntüsü alarak bir PDF dosyasına dönüştüren görsel arayüzlü (GUI) bir uygulamadır.
+![Version](https://img.shields.io/github/v/release/mehyaz/Book2Pdf?style=flat-square)
+![License](https://img.shields.io/github/license/mehyaz/Book2Pdf?style=flat-square)
+![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square)
 
-![Uygulama Arayüzü](https://i.imgur.com/your-image-url.png) <!-- TODO: Add a real screenshot URL -->
+**Book2Pdf**, dijital kitapları (E-kitap, Z-kitap) otomatik olarak ekran görüntüsü alarak yüksek kaliteli PDF formatına dönüştüren açık kaynaklı bir otomasyon aracıdır.
 
-## Özellikler
+![Book2Pdf Screenshot](assets/screenshot.png)
 
-- **Görsel Arayüz:** Tüm ayarları ve işlemleri basit bir arayüz üzerinden yönetin.
-- **Akıllı Alan Seçimi:** Kitabın sayfa alanını ve "sonraki sayfa" butonunu ekrandan tıklayarak kolayca seçin.
-- **HiDPI/Retina Desteği:** Yüksek çözünürlüklü ekranlarda doğru koordinat tespiti için otomatik ölçeklendirme yapar.
-- **Kalite Ayarı:** Oluşturulacak PDF'nin kalitesini (Yüksek, Normal, Düşük) seçerek dosya boyutu ve görüntü netliği arasında denge kurun.
-- **Geri Sayım:** Otomasyon başlamadan önce 3 saniyelik bir geri sayım ile size hazırlık süresi tanır.
-- **Paketlenmiş Uygulama:** Proje, macOS için tek tıklamayla çalıştırılabilir bir `.app` paketi haline getirilmiştir.
+## 🌟 Özellikler
 
-## Kurulum ve Çalıştırma
+*   **Otomatik Sayfa Çevirme**: Siz sadece başlangıcı yapın, gerisini Book2Pdf halleder.
+*   **Retina & Yüksek Çözünürlük (High DPI)**: macOS Retina ekranlarda ve yüksek çözünürlüklü monitörlerde **Flameshot kalitesinde**, bulanık olmayan, kristal netliğinde çıktılar.
+*   **Görüntü İyileştirme**:
+    *   **Keskinleştirme**: Metinleri daha okunaklı hale getirir.
+    *   **Kontrast Artırma**: Arka planı beyazlatır, yazıları koyulaştırır.
+    *   **Siyah-Beyaz Modu**: Gereksiz renkleri atarak dosya boyutunu düşürür ve okumayı kolaylaştırır.
+*   **Ultra Kalite (Upscaling)**: Yazılımsal olarak görüntüyü 2 kat büyüterek (Lanczos filtresi ile) zoom yapıldığında bile bozulmayan PDF'ler oluşturur.
+*   **Çapraz Platform**: Windows, macOS ve Linux üzerinde çalışır.
 
-### 1. Yöntem: Paketlenmiş Uygulamayı Kullanma (macOS)
+## 🚀 Kurulum
 
-1.  `dist` klasörüne gidin.
-2.  `Book2Pdf.app` uygulamasına çift tıklayarak çalıştırın.
+### Hazır Paketler (Önerilen)
+En son sürümü **[Releases](https://github.com/mehyaz/Book2Pdf/releases)** sayfasından indirebilirsiniz.
+*   **Windows**: `.exe` dosyasını indirin ve çalıştırın.
+*   **macOS**: `.app` veya zip dosyasını indirin.
+*   **Linux**: Binary dosyasını indirin.
 
-### 2. Yöntem: Kaynak Kodundan Çalıştırma
+### Kaynak Koddan Çalıştırma
+Geliştirici iseniz veya kaynak koddan çalıştırmak isterseniz:
 
-Eğer uygulamayı kaynak kodundan çalıştırmak veya geliştirmek isterseniz:
+1.  Depoyu klonlayın:
+    ```bash
+    git clone https://github.com/mehyaz/Book2Pdf.git
+    cd Book2Pdf
+    ```
 
-**Adım 1: Depoyu Klonlama**
-```bash
-git clone https://github.com/mehyaz/Book2Pdf.git
-cd Book2Pdf
-```
+2.  Gerekli kütüphaneleri yükleyin:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-**Adım 2: Sanal Ortam Oluşturma ve Aktive Etme**
-```bash
-# Sanal ortamı oluştur
-python3 -m venv book2pdf-env
+3.  Uygulamayı başlatın:
+    ```bash
+    python gui_app_final.py
+    ```
 
-# Sanal ortamı aktive et (macOS/Linux)
-source book2pdf-env/bin/activate
-```
+## 📖 Kullanım
 
-**Adım 3: Gerekli Kütüphaneleri Yükleme**
-```bash
-pip install -r requirements.txt
-```
+1.  **Alanları Seçin**:
+    *   **Sayfa Alanı**: Kitabın sadece sayfa kısmını ekranda seçin.
+    *   **Sonraki Butonu**: Sayfayı çeviren butona tıklayın.
+2.  **Ayarları Yapın**:
+    *   Kaç sayfa çekileceğini ve her sayfa arasında kaç saniye bekleneceğini girin.
+    *   **Kalite**: En iyi sonuç için **"Yüksek (Yavaş)"** seçeneğini kullanın.
+3.  **Görüntü İyileştirme (İsteğe Bağlı)**:
+    *   Daha net metinler için **Keskinleştirme** ve **Kontrast** kutucuklarını işaretleyin.
+4.  **Başlatın**:
+    *   "Otomasyonu Başlat" butonuna basın ve arkanıza yaslanın. PDF masaüstünüze kaydedilecektir.
 
-**Adım 4: Uygulamayı Başlatma**
-```bash
-python3 gui_app_final.py
-```
+## 🤝 Katkıda Bulunma
+Hataları bildirmek veya yeni özellikler eklemek için [Issues](https://github.com/mehyaz/Book2Pdf/issues) sayfasını kullanabilir veya Pull Request gönderebilirsiniz.
 
-## Kullanım Kılavuzu
-
-1.  **Sayfa Alanı Seç:**
-    - `Sayfa Alanı Seç` düğmesine tıklayın. Ekran karardığında kitabınızın sayfasının **sol üst** ve ardından **sağ alt** köşesine tıklayın.
-2.  **Sonraki Butonu Seç:**
-    - `Sonraki Butonu Seç` düğmesine tıklayın ve kitabınızdaki "sonraki sayfa" düğmesinin üzerine tıklayın.
-3.  **Ayarları Girme:**
-    - "Toplam Sayfa", "Bekleme Süresi", "PDF Dosya Adı" ve "PDF Kalitesi" alanlarını doldurun.
-4.  **Başlatma:**
-    - `Otomasyonu Başlat` düğmesine tıklayın.
-    - 3 saniyelik geri sayım sırasında dijital kitabınızın penceresini öne getirin.
-    - İşlem bitene kadar fare ve klavyeye dokunmayın. PDF'iniz proje klasöründe oluşturulacaktır.
-
-## Gelecekteki Geliştirme Fikirleri
-
-- **Otomatik Koordinat Tespiti:** Görüntü işleme ile sayfa alanını ve "sonraki" butonunu otomatik bulma.
-- **Duraklatma/Devam Etme:** Otomasyon sırasında işlemi duraklatıp devam ettirme özelliği.
-- **Farklı Çıktı Formatları:** `.zip` veya `.cbz` (Çizgi Roman Arşivi) olarak kaydetme seçeneği.
-- **Windows Paketi:** Proje için bir Windows `.exe` paketi oluşturma.
-
+## 📄 Lisans
+Bu proje MIT Lisansı ile lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakınız.
