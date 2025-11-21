@@ -557,6 +557,9 @@ class Book2PdfApp(tk.Tk):
         except Exception as e:
             messagebox.showerror("PDF Oluşturma Hatası", f"PyMuPDF ile PDF oluşturulurken bir hata oluştu: {e}")
 
+import multiprocessing
+
 if __name__ == "__main__":
+    multiprocessing.freeze_support()
     app = Book2PdfApp()
     app.mainloop()
