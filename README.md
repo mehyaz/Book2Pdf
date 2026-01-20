@@ -4,40 +4,50 @@
 ![License](https://img.shields.io/github/license/mehyaz/Book2Pdf?style=flat-square)
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-green?style=flat-square)
 
-**Book2Pdf**, dijital kitapları otomatik olarak ekran görüntüsü alarak yüksek kaliteli PDF formatına dönüştüren açık kaynaklı bir otomasyon aracıdır.
+**Book2Pdf** automatically captures digital books as screenshots and converts them into high-quality PDF format.
 
-## 🌟 v1.1.0 Yenilikleri
+**Book2Pdf**, dijital kitapları otomatik olarak ekran görüntüsü alarak yüksek kaliteli PDF formatına dönüştürür.
 
-### 🔄 Duraklat/Devam Et
-Farklı kitaplardan sayfaları tek PDF'te birleştirin!
-- Yakalama sırasında **ESC** tuşuna basarak duraklatın
-- Başka bir kitap açın, "Devam Et" ile eklemeye devam edin
-- Tüm kaynakları tek PDF'te toplayın
-
-### 📊 Oturum Yönetimi
-- Gerçek zamanlı sayfa sayacı: "📄 Toplam: X sayfa"
-- **×** butonu ile istediğiniz zaman sıfırlayın
-- Hatalı yakalama? Baştan başlayın!
-
-### 🎨 Modern Arayüz
-- Temiz 2 butonlu tasarım
-- ESC kısayol ipucu
-- Minimal ve profesyonel görünüm
+![Book2Pdf Screenshot](assets/screenshot.png)
 
 ---
 
-## 🚀 Kurulum
+## 🌟 v1.1.0 Features / Özellikler
 
-### Hazır Paketler (Önerilen)
-En son sürümü **[Releases](https://github.com/mehyaz/Book2Pdf/releases)** sayfasından indirin:
+### 🔄 Pause/Continue | Duraklat/Devam Et
+Merge pages from multiple books into a single PDF!
+- Press **ESC** to pause during capture
+- Open another book, continue adding pages
+- Create one PDF from multiple sources
 
-| Platform | Dosya |
-|----------|-------|
+Farklı kitaplardan sayfaları tek PDF'te birleştirin!
+- Yakalama sırasında **ESC** ile duraklatın
+- Başka kitap açın, eklemeye devam edin
+
+### 📊 Session Management | Oturum Yönetimi
+- Real-time page counter: "📄 Total: X pages"
+- **×** button to reset session anytime
+- Made a mistake? Start over!
+
+### 🎨 Modern UI | Modern Arayüz
+- Clean 2-button design
+- ESC shortcut hint
+- Minimal and professional look
+
+---
+
+## 🚀 Installation / Kurulum
+
+### Pre-built Packages (Recommended)
+Download from **[Releases](https://github.com/mehyaz/Book2Pdf/releases)**:
+
+| Platform | File |
+|----------|------|
 | Windows | `Book2Pdf-v1.1.0-Windows.exe` |
 | macOS | `Book2Pdf-v1.1.0-macOS.zip` |
 | Linux | `Book2Pdf-v1.1.0-Linux` |
 
-### Kaynak Koddan Çalıştırma
+### From Source / Kaynak Koddan
 
 ```bash
 git clone https://github.com/mehyaz/Book2Pdf.git
@@ -48,39 +58,39 @@ python gui_app_final.py
 
 ---
 
-## 📖 Kullanım
+## 📖 Usage / Kullanım
 
-### Temel Akış
-1. **Sayfa Alanı Seç**: Kitabın sayfa bölgesini işaretleyin
-2. **Sonraki Butonu Seç**: Sayfa çevirme butonuna tıklayın
-3. **▶ Başlat**: Otomasyonu başlatın
-4. **ESC**: Duraklatın (isteğe bağlı)
-5. **✓ PDF Oluştur**: Masaüstüne kaydedin
+### Basic Flow / Temel Akış
+1. **Select Page Area** - Sayfa alanını seçin
+2. **Select Next Button** - Sonraki butonunu seçin
+3. **▶ Start** - Başlat
+4. **ESC** to pause (optional) - Duraklatmak için ESC
+5. **✓ Create PDF** - PDF Oluştur
 
-### Birden Fazla Kitap
+### Multiple Books / Birden Fazla Kitap
 ```
-1. İlk kitabı aç → Başlat → ESC ile duraklat
-2. İkinci kitabı aç → Devam Et
-3. Tekrarla...
-4. ✓ PDF Oluştur
+1. Open Book 1 → Start → ESC to pause
+2. Open Book 2 → Continue
+3. Repeat...
+4. ✓ Create PDF
 ```
 
 ---
 
-## ⚙️ Özellikler
+## ⚙️ Features / Özellikler
 
-| Özellik | Açıklama |
-|---------|----------|
-| 🖥️ Retina/HiDPI | macOS Retina ekranlarda kristal netlik |
-| 🔍 Keskinleştirme | Metinleri okunaklı hale getirir |
-| 🌗 Kontrast | Arka planı beyazlatır |
-| ⚫ Siyah-Beyaz | Dosya boyutunu küçültür |
-| 🔬 Ultra Kalite | 2x yazılımsal büyütme |
+| Feature | Description |
+|---------|-------------|
+| 🖥️ Retina/HiDPI | Crystal clear on high-res displays |
+| 🔍 Sharpening | Makes text more readable |
+| 🌗 Contrast | Whitens background |
+| ⚫ Black & White | Reduces file size |
+| 🔬 Ultra Quality | 2x software upscaling |
 
 ---
 
-## 🤝 Katkıda Bulunma
-Sorunlar veya öneriler için [Issues](https://github.com/mehyaz/Book2Pdf/issues) kullanın.
+## 🤝 Contributing
+Use [Issues](https://github.com/mehyaz/Book2Pdf/issues) for bugs or suggestions.
 
-## 📄 Lisans
+## 📄 License
 MIT License
