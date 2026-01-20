@@ -1,66 +1,86 @@
 # Book2Pdf Automation 📚✨
 
-![Version](https://img.shields.io/github/v/release/mehyaz/Book2Pdf?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.1.0-blue?style=flat-square)
 ![License](https://img.shields.io/github/license/mehyaz/Book2Pdf?style=flat-square)
-![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square)
+![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-green?style=flat-square)
 
-**Book2Pdf**, dijital kitapları (E-kitap, Z-kitap) otomatik olarak ekran görüntüsü alarak yüksek kaliteli PDF formatına dönüştüren açık kaynaklı bir otomasyon aracıdır.
+**Book2Pdf**, dijital kitapları otomatik olarak ekran görüntüsü alarak yüksek kaliteli PDF formatına dönüştüren açık kaynaklı bir otomasyon aracıdır.
 
-![Book2Pdf Screenshot](assets/screenshot.png)
+## 🌟 v1.1.0 Yenilikleri
 
-## 🌟 Özellikler
+### 🔄 Duraklat/Devam Et
+Farklı kitaplardan sayfaları tek PDF'te birleştirin!
+- Yakalama sırasında **ESC** tuşuna basarak duraklatın
+- Başka bir kitap açın, "Devam Et" ile eklemeye devam edin
+- Tüm kaynakları tek PDF'te toplayın
 
-*   **Otomatik Sayfa Çevirme**: Siz sadece başlangıcı yapın, gerisini Book2Pdf halleder.
-*   **Retina & Yüksek Çözünürlük (High DPI)**: macOS Retina ekranlarda ve yüksek çözünürlüklü monitörlerde **Flameshot kalitesinde**, bulanık olmayan, kristal netliğinde çıktılar.
-*   **Görüntü İyileştirme**:
-    *   **Keskinleştirme**: Metinleri daha okunaklı hale getirir.
-    *   **Kontrast Artırma**: Arka planı beyazlatır, yazıları koyulaştırır.
-    *   **Siyah-Beyaz Modu**: Gereksiz renkleri atarak dosya boyutunu düşürür ve okumayı kolaylaştırır.
-*   **Ultra Kalite (Upscaling)**: Yazılımsal olarak görüntüyü 2 kat büyüterek (Lanczos filtresi ile) zoom yapıldığında bile bozulmayan PDF'ler oluşturur.
-*   **Çapraz Platform**: Windows, macOS ve Linux üzerinde çalışır.
+### 📊 Oturum Yönetimi
+- Gerçek zamanlı sayfa sayacı: "📄 Toplam: X sayfa"
+- **×** butonu ile istediğiniz zaman sıfırlayın
+- Hatalı yakalama? Baştan başlayın!
+
+### 🎨 Modern Arayüz
+- Temiz 2 butonlu tasarım
+- ESC kısayol ipucu
+- Minimal ve profesyonel görünüm
+
+---
 
 ## 🚀 Kurulum
 
 ### Hazır Paketler (Önerilen)
-En son sürümü **[Releases](https://github.com/mehyaz/Book2Pdf/releases)** sayfasından indirebilirsiniz.
-*   **Windows**: `.exe` dosyasını indirin ve çalıştırın.
-*   **macOS**: `.app` veya zip dosyasını indirin.
-*   **Linux**: Binary dosyasını indirin.
+En son sürümü **[Releases](https://github.com/mehyaz/Book2Pdf/releases)** sayfasından indirin:
+
+| Platform | Dosya |
+|----------|-------|
+| Windows | `Book2Pdf-v1.1.0-Windows.exe` |
+| macOS | `Book2Pdf-v1.1.0-macOS.zip` |
+| Linux | `Book2Pdf-v1.1.0-Linux` |
 
 ### Kaynak Koddan Çalıştırma
-Geliştirici iseniz veya kaynak koddan çalıştırmak isterseniz:
 
-1.  Depoyu klonlayın:
-    ```bash
-    git clone https://github.com/mehyaz/Book2Pdf.git
-    cd Book2Pdf
-    ```
+```bash
+git clone https://github.com/mehyaz/Book2Pdf.git
+cd Book2Pdf
+pip install -r requirements.txt
+python gui_app_final.py
+```
 
-2.  Gerekli kütüphaneleri yükleyin:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3.  Uygulamayı başlatın:
-    ```bash
-    python gui_app_final.py
-    ```
+---
 
 ## 📖 Kullanım
 
-1.  **Alanları Seçin**:
-    *   **Sayfa Alanı**: Kitabın sadece sayfa kısmını ekranda seçin.
-    *   **Sonraki Butonu**: Sayfayı çeviren butona tıklayın.
-2.  **Ayarları Yapın**:
-    *   Kaç sayfa çekileceğini ve her sayfa arasında kaç saniye bekleneceğini girin.
-    *   **Kalite**: En iyi sonuç için **"Yüksek (Yavaş)"** seçeneğini kullanın.
-3.  **Görüntü İyileştirme (İsteğe Bağlı)**:
-    *   Daha net metinler için **Keskinleştirme** ve **Kontrast** kutucuklarını işaretleyin.
-4.  **Başlatın**:
-    *   "Otomasyonu Başlat" butonuna basın ve arkanıza yaslanın. PDF masaüstünüze kaydedilecektir.
+### Temel Akış
+1. **Sayfa Alanı Seç**: Kitabın sayfa bölgesini işaretleyin
+2. **Sonraki Butonu Seç**: Sayfa çevirme butonuna tıklayın
+3. **▶ Başlat**: Otomasyonu başlatın
+4. **ESC**: Duraklatın (isteğe bağlı)
+5. **✓ PDF Oluştur**: Masaüstüne kaydedin
+
+### Birden Fazla Kitap
+```
+1. İlk kitabı aç → Başlat → ESC ile duraklat
+2. İkinci kitabı aç → Devam Et
+3. Tekrarla...
+4. ✓ PDF Oluştur
+```
+
+---
+
+## ⚙️ Özellikler
+
+| Özellik | Açıklama |
+|---------|----------|
+| 🖥️ Retina/HiDPI | macOS Retina ekranlarda kristal netlik |
+| 🔍 Keskinleştirme | Metinleri okunaklı hale getirir |
+| 🌗 Kontrast | Arka planı beyazlatır |
+| ⚫ Siyah-Beyaz | Dosya boyutunu küçültür |
+| 🔬 Ultra Kalite | 2x yazılımsal büyütme |
+
+---
 
 ## 🤝 Katkıda Bulunma
-Hataları bildirmek veya yeni özellikler eklemek için [Issues](https://github.com/mehyaz/Book2Pdf/issues) sayfasını kullanabilir veya Pull Request gönderebilirsiniz.
+Sorunlar veya öneriler için [Issues](https://github.com/mehyaz/Book2Pdf/issues) kullanın.
 
 ## 📄 Lisans
-Bu proje MIT Lisansı ile lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakınız.
+MIT License
